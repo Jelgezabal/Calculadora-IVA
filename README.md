@@ -14,13 +14,15 @@ El proyecto está alojado en GitHub Pages y puede ser accedido directamente desd
 
 - **Sumar IVA**: Calcula el importe total sumando el 21% de IVA.
 - **Restar IVA**: Calcula la base imponible restando el 21% de IVA.
-- **Copiar resultados**: Copia el resultado final (Total o Base Imponible) al portapapeles con un botón o con `Ctrl + C`.
+- **Copiar resultados**: Copia el resultado final (Total o Base Imponible) al portapapeles con un botón <img src="assets/copy.svg" alt="Copiar" width="16" height="16"> o con `Ctrl + C`.
 - **Atajos de teclado**:
   - `Enter` o `Flecha Arriba (↑)`: Suma el IVA.
   - `Flecha Abajo (↓)`: Resta el IVA.
   - `Ctrl + C`: Copia el resultado más reciente.
-- **Modo claro/oscuro**: Alterna entre temas claro y oscuro con un botón (ícono de sol/luna).
+- **Modo claro/oscuro**: Alterna entre temas claro y oscuro con un botón <img src="assets/moon.svg" alt="Modo oscuro" width="24" height="24">/<img src="assets/sun.svg" alt="Modo claro" width="24" height="24">.
 - **Validación de entrada**: Solo permite números y comas para decimales.
+- **Diseño responsivo**: Adaptado para móviles y tablets.
+- **Detección de idioma**: Español o inglés según el navegador.
 
 ## Uso
 
@@ -35,10 +37,10 @@ El proyecto está alojado en GitHub Pages y puede ser accedido directamente desd
    - Haz clic en **Restar IVA** (o presiona `Flecha Abajo`) para obtener la base imponible sin IVA.
 
 4. **Copia el resultado**:
-   - Haz clic en el ícono de copiar 📋 junto al resultado final, o presiona `Ctrl + C`.
+   - Haz clic en el ícono de copiar <img src="assets/copy.svg" alt="Copiar" width="16" height="16"> junto al resultado final, o presiona `Ctrl + C`.
 
 5. **Cambia el tema**:
-   - Haz clic en el ícono de sol/luna 🌞🌙 para alternar entre modo claro y oscuro.
+   - Haz clic en el ícono de <img src="assets/moon.svg" alt="Modo oscuro" width="24" height="24">/<img src="assets/sun.svg" alt="Modo claro" width="24" height="24"> para alternar entre modo claro y oscuro.
 
 ## Ejemplo
 
