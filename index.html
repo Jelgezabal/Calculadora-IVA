@@ -61,7 +61,7 @@
             max-width: 350px;
             width: 90%;
             position: fixed;
-            top: 10px;
+            top: 30px; /* Ajustado para bajar un poco la calculadora */
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
@@ -72,8 +72,8 @@
             .container {
                 width: 95%;
                 padding: 15px;
-                max-height: 80vh;
-                overflow-y: auto;
+                /* Eliminamos max-height para evitar scroll innecesario */
+                overflow-y: auto; /* Solo si el contenido excede el tamaño */
             }
 
             input {
@@ -114,7 +114,7 @@
         /* Estilos para tablets y PC (601px en adelante) */
         @media (min-width: 601px) {
             body {
-                overflow-y: hidden;
+                overflow-y: hidden; /* Evita scroll en PC */
             }
 
             .container {
