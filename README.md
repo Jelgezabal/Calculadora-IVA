@@ -8,7 +8,7 @@ Una calculadora simple para sumar o restar el IVA (21%) a un importe, creada con
 Esta calculadora de IVA permite a los usuarios calcular rápidamente el IVA (21%) sobre un importe ingresado. Puedes sumar el IVA para obtener el total o restar el IVA para obtener la base imponible. Incluye funciones adicionales como copiar resultados al portapapeles, atajos de teclado, y un modo claro/oscuro.
 
 El proyecto está alojado en GitHub Pages y puede ser accedido directamente desde el siguiente enlace:  
-🔗 [Calculadora de IVA](https://jeigezabal.github.io/Calculadora-IVA/)
+🔗 [Calculadora de IVA](https://jelgezabal.github.io/Calculadora-IVA/)
 
 ## Características
 
@@ -25,7 +25,7 @@ El proyecto está alojado en GitHub Pages y puede ser accedido directamente desd
 ## Uso
 
 1. **Accede a la calculadora**:
-   - Visita [[https://jeigezabal.github.io/Calculadora-IVA/]([https://jelgezabal.github.io/Calculadora-IVA/]
+   - Visita [https://jelgezabal.github.io/Calculadora-IVA/](https://jelgezabal.github.io/Calculadora-IVA/).
    
 2. **Ingresa un importe**:
    - Escribe un importe en el campo de texto (ejemplo: `100,50`). Solo se permiten números y comas.
@@ -58,4 +58,4 @@ Si deseas usar o modificar esta calculadora localmente:
 
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/jeigezabal/Calculadora-IVA.git
+   git clone https://github.com/jelgezabal/Calculadora-IVA.git
