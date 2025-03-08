@@ -25,7 +25,7 @@ El proyecto está alojado en GitHub Pages y puede ser accedido directamente desd
 ## Uso
 
 1. **Accede a la calculadora**:
-   - Visita [https://jeigezabal.github.io/Calculadora-IVA/](https://jeigezabal.github.io/Calculadora-IVA/).
+   - Visita [[https://jeigezabal.github.io/Calculadora-IVA/]([https://jelgezabal.github.io/Calculadora-IVA/]
    
 2. **Ingresa un importe**:
    - Escribe un importe en el campo de texto (ejemplo: `100,50`). Solo se permiten números y comas.
