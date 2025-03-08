@@ -26,11 +26,12 @@
             color: var(--text-color);
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
             margin: 0;
             flex-direction: column;
             transition: all 0.3s;
+            padding-top: 60px;
         }
 
         body.light {
@@ -57,17 +58,16 @@
             text-align: center;
             max-width: 350px;
             width: 90%;
-            position: relative;
-            top: -20px;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
         }
 
         /* Estilos para móviles (hasta 600px) */
         @media (max-width: 600px) {
             .container {
-                position: fixed;
-                top: 10px;
-                left: 50%;
-                transform: translateX(-50%);
                 width: 95%;
                 padding: 15px;
                 max-height: 80vh;
@@ -112,7 +112,6 @@
         /* Estilos para tablets (601px a 1024px) */
         @media (min-width: 601px) and (max-width: 1024px) {
             .container {
-                top: -10px;
                 max-width: 400px;
                 width: 90%;
                 padding: 20px;
