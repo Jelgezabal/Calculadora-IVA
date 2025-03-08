@@ -14,12 +14,12 @@ El proyecto está alojado en GitHub Pages y puede ser accedido directamente desd
 
 - **Sumar IVA**: Calcula el importe total sumando el 21% de IVA.
 - **Restar IVA**: Calcula la base imponible restando el 21% de IVA.
-- **Copiar resultados**: Copia el resultado final (Total o Base Imponible) al portapapeles con un botón <img src="assets/copy.svg" alt="Copiar" width="16" height="16"> o con `Ctrl + C`.
+- **Copiar resultados**: Copia el resultado final (Total o Base Imponible) al portapapeles con un botón <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> o con `Ctrl + C`.
 - **Atajos de teclado**:
   - `Enter` o `Flecha Arriba (↑)`: Suma el IVA.
   - `Flecha Abajo (↓)`: Resta el IVA.
   - `Ctrl + C`: Copia el resultado más reciente.
-- **Modo claro/oscuro**: Alterna entre temas claro y oscuro con un botón <img src="assets/moon.svg" alt="Modo oscuro" width="24" height="24">/<img src="assets/sun.svg" alt="Modo claro" width="24" height="24">.
+- **Modo claro/oscuro**: Presiona el icono claro <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> u oscuro <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"></path></svg> para alternar entre temas.
 - **Validación de entrada**: Solo permite números y comas para decimales.
 - **Diseño responsivo**: Adaptado para móviles y tablets.
 - **Detección de idioma**: Español o inglés según el navegador.
@@ -37,10 +37,10 @@ El proyecto está alojado en GitHub Pages y puede ser accedido directamente desd
    - Haz clic en **Restar IVA** (o presiona `Flecha Abajo`) para obtener la base imponible sin IVA.
 
 4. **Copia el resultado**:
-   - Haz clic en el ícono de copiar <img src="assets/copy.svg" alt="Copiar" width="16" height="16"> junto al resultado final, o presiona `Ctrl + C`.
+   - Haz clic en el ícono de copiar <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> junto al resultado final, o presiona `Ctrl + C`.
 
 5. **Cambia el tema**:
-   - Haz clic en el ícono de <img src="assets/moon.svg" alt="Modo oscuro" width="24" height="24">/<img src="assets/sun.svg" alt="Modo claro" width="24" height="24"> para alternar entre modo claro y oscuro.
+   - Presiona el icono claro <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> u oscuro <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"></path></svg> para alternar entre temas.
 
 ## Ejemplo
 
