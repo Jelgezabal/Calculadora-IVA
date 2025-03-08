@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <title>Calculadora de IVA</title>
+    <style>
+        :root {
+            --bg-color: #040415;
+            --text-color: #f4f4f4;
+            --card-bg: #040415;
+            --border-color: #202040;
+            --button-bg: #2a2a5a;
+            --button-text: #ffffff;
+            --input-bg: #040415;
+            --input-border: #202040;
+            --input-text: #ffffff;
+            --result-green: #4CAF50;
+            --result-red: #FF5252;
+            --blue-border: #2a2a5a;
+        }
+
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: auto;
+            margin: 0;
+            flex-direction: column;
+            transition: all 0.3s;
+        }
+
+        body.light {
+            --bg-color: #f4f4f4;
+            --text-color: #040415;
+            --card-bg: #ffffff;
+            --border-color: #d0d0d0;
+            --button-bg: #2a2a5a;
+            --button-text: #ffffff;
+            --input-bg: #ffffff;
+            --input-border: #d0d0d0;
+            --input-text: #040415;
+            --result-green: #4CAF50;
+            --result-red: #FF5252;
+            --blue-border: #2a2a5a;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 20px; /* Valor original, uniforme para todos los lados */
+            /* Nota: Cambia padding-top aquí (20px actualmente) si quieres ajustar el espacio interno superior */
+            /* Nota: Cambia top (30px actualmente) si quieres mover la calculadora verticalmente en la pantalla */
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 300px;
+            width: 90%;
+            position: fixed;
+            top: 30px; /* Valor original */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        /* Estilos para móviles (hasta 600px) */
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 15px; /* Valor original, uniforme para móviles */
+                /* Nota: Cambia padding-top aquí (15px actualmente) si quieres ajustar el espacio interno superior en móviles */
+                /* Nota: Cambia top (30px actualmente) si quieres mover la calculadora verticalmente en móviles */
+                overflow-y: auto;
+            }
+
+            input {
+                font-size: 1em;
+                padding: 8px;
+                -webkit-appearance: none; /* Oculta flechas en WebKit */
+                -moz-appearance: textfield; /* Oculta flechas en Firefox */
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input::-moz-outer-spin-button,
+            input::-moz-inner-spin-button {
+                -moz-appearance: none;
+                margin: 0;
+            }
+
+            button {
+                font-size: 0.9em;
+                padding: 8px;
+            }
+
+            .result {
+                font-size: 0.9em;
+                padding: 10px;
+            }
+
+            .copy-button {
+                width: 20px;
+                padding: 2px;
+            }
+
+            .theme-toggle {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Estilos para tablets y PC (601px en adelante) */
+        @media (min-width: 601px) {
+            body {
+                overflow-y: hidden;
+            }
+
+            .container {
+                max-width: 300px;
+                width: 90%;
+                padding: 20px; /* Valor original, uniforme para tablets/PC */
+                /* Nota: Cambia padding-top aquí (20px actualmente) si quieres ajustar el espacio interno superior en tablets/PC */
+                /* Nota: Cambia top (30px actualmente) si quieres mover la calculadora verticalmente en tablets/PC */
+            }
+
+            input {
+                font-size: 1.1em;
+            }
+
+            button {
+                font-size: 1em;
+            }
+
+            .result {
+                font-size: 0.95em;
+            }
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid var(--input-border);
+            border-radius: 5px;
+            font-size: 1.2em;
+            text-align: center;
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            outline: none;
+            border-color: var(--input-border);
+        }
+
+        input:focus {
+            border-color: var(--input-border);
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Sombra blanca */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 2px solid var(--blue-border);
+            padding: 10px;
+            width: 48%;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: 'Roboto', sans-serif; /* Fuente para los botones */
+        }
+
+        button:hover {
+            background-color: #3a3a7a;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 1em;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Roboto', Consolas, monospace; /* Fuente para los importes con Roboto como respaldo */
+            font-weight: 300; /* Valor numérico para ajustar el peso */
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .green { color: var(--result-green); }
+        .red { color: var(--result-red); }
+
+        .copy-button {
+            background-color: var(--button-bg);
+            padding: 3px 2px;
+            font-size: 0.9em;
+            border: 2px solid var(--blue-border);
+            border-radius: 3px;
+            color: var(--button-text);
+            cursor: pointer;
+            width: 24px;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .copy-button:hover {
+            background-color: #3a3a7a;
+        }
+
+        .copy-button:focus {
+            outline: none;
+        }
+
+        .theme-toggle {
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 1.8em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+    </style>
+</head>
+<body data-theme="dark" onload="setFocus(); setLanguage()">
+    <div class="container">
+        <h2 id="title">Calculadora de IVA</h2>
+        <input type="number" id="amount" inputmode="numeric" oninput="validateInput()" onkeydown="handleKeyPress(event)" />
+        <div class="button-group">
+            <button onclick="restarIVA()">{{subtractButton}}</button>
+            <button onclick="sumarIVA()">{{addButton}}</button>
+        </div>
+        <div class="result" id="result"></div>
+        <span class="theme-toggle" onclick="toggleTheme()">
+            <svg id="theme-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"></path>
+            </svg>
+        </span>
+    </div>
+
+    <script>
+        let lastResult = "";
+        const translations = {
+            es: {
+                title: "Calculadora de IVA",
+                subtractButton: "- Restar IVA",
+                addButton: "+ Sumar IVA",
+                resultValid: "Ingrese un importe válido",
+                amount: "Importe",
+                vat: "IVA (21%)",
+                total: "Total",
+                vatAmount: "Importe con IVA",
+                base: "Base imponible"
+            },
+            en: {
+                title: "VAT Calculator",
+                subtractButton: "- Subtract VAT",
+                addButton: "+ Add VAT",
+                resultValid: "Enter a valid amount",
+                amount: "Amount",
+                vat: "VAT (21%)",
+                total: "Total",
+                vatAmount: "Amount with VAT",
+                base: "Taxable Base"
+            }
+        };
+
+        function setLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const lang = userLang.startsWith('es') ? 'es' : 'en';
+            document.getElementById('title').textContent = translations[lang].title;
+            document.querySelectorAll('button')[0].textContent = translations[lang].subtractButton;
+            document.querySelectorAll('button')[1].textContent = translations[lang].addButton;
+        }
+
+        function setFocus() {
+            document.getElementById("amount").focus();
+        }
+
+        function validateInput() {
+            let input = document.getElementById("amount");
+            input.value = input.value.replace(/[^0-9,]/g, '').replace(/\./g, ',');
+        }
+
+        function formatNumber(num) {
+            return num.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Resultado copiado: " + text);
+            }).catch(err => {
+                console.error("Error al copiar: ", err);
+            });
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById("theme-icon");
+            if (body.classList.contains("light")) {
+                body.classList.remove("light");
+                themeIcon.innerHTML = `
+                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"></path>
+                `;
+            } else {
+                body.classList.add("light");
+                themeIcon.innerHTML = `
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                `;
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sumarIVA();
+                if (window.innerWidth <= 600) {
+                    document.getElementById("amount").blur();
+                }
+            } else if (event.key === "ArrowUp") {
+                event.preventDefault();
+                sumarIVA();
+            } else if (event.key === "ArrowDown") {
+                event.preventDefault();
+                restarIVA();
+            } else if (event.ctrlKey && event.key === "c") {
+                event.preventDefault();
+                if (lastResult) {
+                    copyToClipboard(lastResult);
+                } else {
+                    alert("No hay resultado para copiar. Calcula primero.");
+                }
+            }
+        }
+
+        function sumarIVA() {
+            let amount = parseFloat(document.getElementById("amount").value.replace(',', '.'));
+            const lang = navigator.language.startsWith('es') ? 'es' : 'en';
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("result").innerHTML = translations[lang].resultValid;
+                lastResult = "";
+                return;
+            }
+            let iva = amount * 0.21;
+            let total = amount + iva;
+            lastResult = formatNumber(total);
+            document.getElementById("result").innerHTML = `
+                <div class="result-item">
+                    <span>${translations[lang].amount}: ${formatNumber(amount)} €</span>
+                </div>
+                <div class="result-item">
+                    <span>${translations[lang].vat}: ${formatNumber(iva)} €</span>
+                </div>
+                <div class="result-item">
+                    <span class="green">${translations[lang].total}: ${formatNumber(total)} €</span>
+                    <button class="copy-button" onclick='copyToClipboard("${formatNumber(total)}")'>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>`;
+        }
+
+        function restarIVA() {
+            let amount = parseFloat(document.getElementById("amount").value.replace(',', '.'));
+            const lang = navigator.language.startsWith('es') ? 'es' : 'en';
+            if (isNaN(amount) || amount <= 0) {
+                document.getElementById("result").innerHTML = translations[lang].resultValid;
+                lastResult = "";
+                return;
+            }
+            let base = amount / 1.21;
+            let iva = amount - base;
+            lastResult = formatNumber(base);
+            document.getElementById("result").innerHTML = `
+                <div class="result-item">
+                    <span>${translations[lang].vatAmount}: ${formatNumber(amount)} €</span>
+                </div>
+                <div class="result-item">
+                    <span>${translations[lang].vat}: ${formatNumber(iva)} €</span>
+                </div>
+                <div class="result-item">
+                    <span class="red">${translations[lang].base}: ${formatNumber(base)} €</span>
+                    <button class="copy-button" onclick='copyToClipboard("${formatNumber(base)}")'>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                    </button>
+                </div>`;
+        }
+    </script>
+</body>
+</html>
